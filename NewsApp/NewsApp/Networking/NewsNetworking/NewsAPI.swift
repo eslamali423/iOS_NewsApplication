@@ -6,17 +6,18 @@
 //
 
 import Foundation
+import Alamofire
 
 //MARK:-  protocol oriented
 protocol NewsAPIProtocol {
-    func getData(completion: @escaping (Result<APIResponse?, NSError>)-> Void)
+    func getData(completion: @escaping (Result<APIResponse?, AFError>)-> Void)
 }
 
 //MARK:- NewsAPI Class
-class NewsAPI  : BaseAPI <NewsNetwroking> {
+class NewsAPI  : BaseAPI <NewsNetwroking>, NewsAPIProtocol {
 
-    func getData(completion: @escaping (Result<APIResponse?, NSError>)->Void) {
-        self.fetchData(target: .getNews , responseClass: APIResponse.self) { (result) in
+    func getData(completion: @escaping (Result<APIResponse?, AFError>)-> Void){
+        self.fetchData(target: .getNews, responseClass: APIResponse.self) { (result) in
             completion(result)
         }
     }

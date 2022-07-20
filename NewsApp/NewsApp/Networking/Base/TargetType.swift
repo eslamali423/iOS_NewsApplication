@@ -16,20 +16,19 @@ enum HTTPMethod : String {
     case delete = "DELETE"
     
 }
-
 enum Task   {
-    
     case requestPlain
+    
     case requestParameter(parameters : [String : Any], encoding : ParameterEncoding)
     
 }
 
 protocol TargetType  {
-    
+   
     var baseUrl : String {get}
     var path : String {get}
     var method  : HTTPMethod {get}
     var task : Task {get}
     var headers : [String:String]? {get}
-    
+
 }

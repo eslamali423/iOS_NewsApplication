@@ -13,20 +13,22 @@ enum NewsNetwroking {
 }
 
 extension NewsNetwroking : TargetType {
-    
     var baseUrl: String {
-        
-        get {return Constants.baseUrl}
-        set {}
+        get { return  Constants.baseUrl }
+        set { }
     }
-        
+    
+    
+    
+    
+ 
         
         var path: String {
         switch self {
         case .getNews:
             return "\(Constants.query)\(Constants.apiKey)"
         
-    
+        
         }
         }
         
@@ -35,7 +37,7 @@ extension NewsNetwroking : TargetType {
         case .getNews :
         return .get
         
-      
+        
         }
         }
         
@@ -43,13 +45,14 @@ extension NewsNetwroking : TargetType {
         switch self {
         case .getNews:
         return .requestPlain
-    
+        
         }
         }
         
         var headers: [String : String]? {
         return [:]
         }
+        
         
         
     }
