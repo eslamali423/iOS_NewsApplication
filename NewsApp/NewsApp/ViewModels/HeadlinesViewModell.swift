@@ -21,9 +21,12 @@ class HeadlinesViewModell {
           switch result  {
             case .success(let response):
                 self.headlinesBehaviorSubject.on(.next(response?.articles ?? []))
+                print("Result ===== \(response?.articles[1].description)" )
                 completion(true)
             case .failure(let error):
+                print("Error geting data in viewModel")
                 print(error)
+                
                 completion(false)
             }
 

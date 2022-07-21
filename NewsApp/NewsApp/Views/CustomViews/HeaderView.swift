@@ -10,19 +10,16 @@ import UIKit
 class HeaderView: UIView {
     
     //MARK:- Vars
-    private let profileButton : UIButton = {
-        let button =  UIButton()
-        button.setImage(UIImage(systemName: "person",withConfiguration: UIImage.SymbolConfiguration(pointSize: 30, weight: .regular)), for: .normal)
-        button.titleLabel?.font = .systemFont(ofSize: 14, weight : .bold)
+    private let personImageView : UIImageView = {
+        let image = UIImageView()
+        image.contentMode = .scaleToFill
+        image.image = UIImage(named: "person.png")
+        image.clipsToBounds = true
+        image.layer.cornerRadius = 30
+        image.tintColor = .systemPink
+        image.translatesAutoresizingMaskIntoConstraints = false
         
-        button.layer.borderWidth = 0.1
-        button.layer.borderColor = UIColor.systemPink.cgColor
-        button.tintColor = .systemPink
-        button.layer.cornerRadius = 30
-        
-        button.translatesAutoresizingMaskIntoConstraints = false
-        
-        return button
+        return image
     }()
     
     public let titleLabel : UILabel = {
@@ -32,7 +29,7 @@ class HeaderView: UIView {
         label.textColor = .label
         label.textAlignment = .left
         label.text = "Welcome Back Again"
-        label.font = .systemFont(ofSize: 18, weight: .regular)
+        label.font = .systemFont(ofSize: 20, weight: .regular)
         label.adjustsFontSizeToFitWidth = false
         return label
     }()
@@ -65,7 +62,7 @@ class HeaderView: UIView {
         button.setImage(UIImage(systemName: "gearshape",withConfiguration: UIImage.SymbolConfiguration(pointSize: 30, weight: .regular)), for: .normal)
         button.titleLabel?.font = .systemFont(ofSize: 14, weight : .bold)
         
-        button.layer.borderWidth = 0.1
+        button.layer.borderWidth = 0.7
         button.layer.borderColor = UIColor.systemPink.cgColor
         button.tintColor = .systemPink
         button.layer.cornerRadius = 30
@@ -79,7 +76,7 @@ class HeaderView: UIView {
         let search = UISearchBar()
         search.translatesAutoresizingMaskIntoConstraints = false
         search.placeholder =  "Search about anything.."
-        search.layer.borderWidth = 0.2
+        search.layer.borderWidth = 0.7
         search.layer.borderColor = UIColor.systemPink.cgColor
         search.layer.cornerRadius = 15
         search.searchTextField.backgroundColor = .clear
@@ -91,28 +88,21 @@ class HeaderView: UIView {
     //MARK:- Initlizaers
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = .green
+        backgroundColor = .clear
         self.clipsToBounds = true
         
         setupViews()
         configureConstraints()
-        
-        //          addSubview(titleLabel)
-        //          addSubview(collectionView)
-        
-        
-        
-        
-        
-        //          bindCollectionView(albums: albums)
     }
     
     required init?(coder: NSCoder) {
         fatalError()
     }
     
+    
+    //MARK:- Layouts and Constraints
     private func setupViews(){
-        addSubview(profileButton)
+        addSubview(personImageView)
         stackView.addArrangedSubview(titleLabel)
         stackView.addArrangedSubview(nameLabel)
         addSubview(stackView)
@@ -124,22 +114,22 @@ class HeaderView: UIView {
     private func configureConstraints(){
         NSLayoutConstraint.activate([
             
-           profileButton.leadingAnchor.constraint(equalTo: leadingAnchor,constant: 20),
-           profileButton.topAnchor.constraint(equalTo: topAnchor,constant: 20),
-           profileButton.widthAnchor.constraint(equalToConstant: 60 ),
-           profileButton.heightAnchor.constraint(equalToConstant: 60 ),
+            personImageView.leadingAnchor.constraint(equalTo: leadingAnchor,constant: 20),
+            personImageView.topAnchor.constraint(equalTo: topAnchor,constant: 20),
+            personImageView.widthAnchor.constraint(equalToConstant: 60 ),
+            personImageView.heightAnchor.constraint(equalToConstant: 60 ),
 
-            stackView.leadingAnchor.constraint(equalTo: profileButton.trailingAnchor, constant: 10),
-            stackView.centerYAnchor.constraint(equalTo: profileButton.centerYAnchor),
+            stackView.leadingAnchor.constraint(equalTo: personImageView.trailingAnchor, constant: 10),
+            stackView.centerYAnchor.constraint(equalTo: personImageView.centerYAnchor),
             
-            settingButton.topAnchor.constraint(equalTo: profileButton.topAnchor),
+            settingButton.topAnchor.constraint(equalTo: personImageView.topAnchor),
             settingButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
             settingButton.widthAnchor.constraint(equalToConstant: 60 ),
             settingButton.heightAnchor.constraint(equalToConstant: 60 ),
             
             searchBar.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
             searchBar.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
-            searchBar.topAnchor.constraint(equalTo: profileButton.bottomAnchor, constant: 10),
+            searchBar.topAnchor.constraint(equalTo: personImageView.bottomAnchor, constant: 20),
             searchBar.heightAnchor.constraint(equalToConstant: 60)
         ])
     }
