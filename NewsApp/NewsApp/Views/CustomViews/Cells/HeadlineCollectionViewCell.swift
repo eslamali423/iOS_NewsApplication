@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class HeadlineCollectionViewCell: UICollectionViewCell {
    //MARK:- Vars
@@ -15,20 +16,20 @@ class HeadlineCollectionViewCell: UICollectionViewCell {
        let image = UIImageView()
         image.contentMode = .scaleToFill
         image.image = UIImage(systemName: "heart")
-        image.layer.cornerRadius = 12
         image.clipsToBounds = true
+        image.backgroundColor = .systemYellow
         image.translatesAutoresizingMaskIntoConstraints = false
-        image.tintColor = .systemPink
         return image
     }()
     
     public let titleLabel : UILabel = {
         let label =  UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.numberOfLines = 2
+        label.numberOfLines = 0
         label.textColor = .label
         label.textAlignment = .left
-        label.font = .systemFont(ofSize: 18, weight: .semibold)
+        label.text = "Title Title Title Title Title Title Title Title Title Title Title Title Title Title Title Title Title Title itle Title Title Title Title Title Title Title Title Title Title Title Title Title Title Title Title Title  "
+        label.font = .systemFont(ofSize: 16, weight: .semibold)
         label.adjustsFontSizeToFitWidth = false
         return label
     }()
@@ -58,8 +59,7 @@ class HeadlineCollectionViewCell: UICollectionViewCell {
     //MARK:- Initilizers
     override init(frame: CGRect) {
         super.init(frame: frame)
-        contentView.backgroundColor = .clear
-        self.clipsToBounds = true
+        contentView.backgroundColor = .systemBackground
         setupLayouts()
         configureConstraints()
     }
@@ -80,6 +80,9 @@ class HeadlineCollectionViewCell: UICollectionViewCell {
         contentView.layer.cornerRadius = 12
         contentView.layer.shadowRadius = 10
         contentView.layer.shadowOpacity = 0.3
+       
+        
+
     }
     
    
@@ -88,24 +91,51 @@ class HeadlineCollectionViewCell: UICollectionViewCell {
         
             headlineImageView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
             headlineImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
-            headlineImageView.heightAnchor.constraint(equalToConstant: 130),
-            headlineImageView.widthAnchor.constraint(equalToConstant: 130),
+            headlineImageView.heightAnchor.constraint(equalToConstant: 150),
+            headlineImageView.widthAnchor.constraint(equalToConstant: 150),
             
             titleLabel.topAnchor.constraint(equalTo: headlineImageView.bottomAnchor,constant: 8),
             titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,constant: 10),
             titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor,constant: -10),
             
+            
+            
             personImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
             personImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10),
+            personImageView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 10),
+
             personImageView.widthAnchor.constraint(equalToConstant: 20),
             personImageView.heightAnchor.constraint(equalToConstant: 20),
             
-            
-            
+           authorNameLabel.centerYAnchor.constraint(equalTo: personImageView.centerYAnchor),
+           authorNameLabel.leadingAnchor.constraint(equalTo: personImageView.trailingAnchor,constant: 2),
+           authorNameLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor,constant: -10)
+           
         
         ])
     }
     
+    //MARK:- Cell Configuration
+    func configureCell(model: Article){
+     
+        if model.author == nil {
+            self.authorNameLabel.text = "Unknown"
+
+        }else {
+            self.authorNameLabel.text = model.author
+
+        }
+        
+       
+        self.titleLabel.text = model.title
+        
+        if let url = URL(string: model.urlToImage) {
+        self.headlineImageView.sd_setImage(with: url, completed: nil)
+        }else {
+            self.headlineImageView.image = UIImage(systemName: "note.text")
+        }
+        
+    }
 }
 
 

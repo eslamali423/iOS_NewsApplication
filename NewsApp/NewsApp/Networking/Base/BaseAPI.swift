@@ -32,10 +32,7 @@ class BaseAPI <T: TargetType> {
                 completion(.failure(error))
             }
         }
-        
-        
     }
-    
     
     private func buildPrams(task : Task) -> ([String:Any], ParameterEncoding) {
         switch task {

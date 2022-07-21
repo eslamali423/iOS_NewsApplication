@@ -21,8 +21,10 @@ class NewsViewModel {
             switch result {
             case .success(let response):
                 self.newsBehaviorSubject.on(.next(response?.articles ?? []))
+                print(response?.articles)
                 completion(true)
             case .failure(let error):
+                print("Error geting data in viewModel")
                 print(error)
                 completion(false)
             }

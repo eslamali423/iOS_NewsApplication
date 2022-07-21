@@ -23,6 +23,7 @@ extension HeadlinesNetworking : TargetType {
         case .getHeadlines:
             return "\(Constants.query)\(Constants.apiKey)"
             
+            
         }
     }
     

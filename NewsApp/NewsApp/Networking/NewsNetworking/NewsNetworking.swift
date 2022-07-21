@@ -18,44 +18,39 @@ extension NewsNetwroking : TargetType {
         set { }
     }
     
-    
-    
-    
- 
-        
-        var path: String {
+    var path: String {
         switch self {
         case .getNews:
             return "\(Constants.query)\(Constants.apiKey)"
-        
-        
+            
+            
         }
-        }
-        
-        var method: HTTPMethod {
+    }
+    
+    var method: HTTPMethod {
         switch self  {
         case .getNews :
-        return .get
-        
-        
+            return .get
+            
+            
         }
-        }
-        
-        var task: Task {
+    }
+    
+    var task: Task {
         switch self {
         case .getNews:
-        return .requestPlain
-        
+            return .requestPlain
+            
         }
-        }
-        
-        var headers: [String : String]? {
-        return [:]
-        }
-        
-        
-        
     }
+    
+    var headers: [String : String]? {
+        return [:]
+    }
+    
+    
+    
+}
 
 
 

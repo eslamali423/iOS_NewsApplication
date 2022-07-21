@@ -49,7 +49,7 @@ class NewsTableViewCell: UITableViewCell {
     private let personImageView : UIImageView = {
        let image = UIImageView()
         image.contentMode = .scaleToFill
-        image.image = UIImage(systemName: "person.circle")
+        image.image = UIImage(named: "person.png")
         image.clipsToBounds = true
         image.tintColor = .systemPink
         image.translatesAutoresizingMaskIntoConstraints = false
