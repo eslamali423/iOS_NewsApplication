@@ -1,0 +1,12 @@
+// Home Screen
+// Table view header
+"WELCOME_LABEL_TITLE" = "مرحبًا ";
+"NAME_LABEL_TITLE" = "إسلام علي";
+"SEARCH_PLACEHOLDER" = "أبحث عن المقالات...";
+
+// TableView Section
+"TOP_ARTICELS_LABEL" = "أهم المقالات";
+
+// TabBar
+"HOME_LABEL_TITLE" = "الرئيسية";
+"HEADLINES_LABEL_TITLE" = "أهم الأخبار";

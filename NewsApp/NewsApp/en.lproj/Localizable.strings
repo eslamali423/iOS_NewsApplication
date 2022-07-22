@@ -1,0 +1,12 @@
+// Home Screen
+// Table view header
+"WELCOME_LABEL_TITLE" = "Welcome";
+"NAME_LABEL_TITLE" = "Eslam Ali";
+"SEARCH_PLACEHOLDER" = "Search Articles...";
+
+// TableView Section
+"TOP_ARTICELS_LABEL" = "Top Articles";
+
+// TabBar
+"HOME_LABEL_TITLE" = "Home";
+"HEADLINES_LABEL_TITLE" = "Headlines";
