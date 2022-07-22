@@ -211,7 +211,7 @@ class NewsDetailsViewController: UIViewController {
         self.contentLabel.text = model.content
         self.titleLabel.text = model.title
         self.dateLabel.text = model.publishedAt
-        if let url = URL(string: model.urlToImage) {
+        if let url = URL(string: model.urlToImage ?? "" ) {
         self.newsImageView.sd_setImage(with: url, completed: nil)
         }else {
             self.newsImageView.image = UIImage(systemName: "note.text")

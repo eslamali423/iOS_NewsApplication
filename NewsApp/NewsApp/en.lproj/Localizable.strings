@@ -10,3 +10,9 @@
 // TabBar
 "HOME_LABEL_TITLE" = "Home";
 "HEADLINES_LABEL_TITLE" = "Headlines";
+
+// Settings Screen
+"CHANGE_LANGUAGE" = "Change language";
+
+// progrssHUD
+"NO_ARTICLES" = "There are no articles found";

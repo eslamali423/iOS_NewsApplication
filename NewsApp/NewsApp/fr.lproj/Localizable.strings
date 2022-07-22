@@ -10,3 +10,9 @@
 // TabBar
 "HOME_LABEL_TITLE" = "domicile";
 "HEADLINES_LABEL_TITLE" = "titres";
+
+// Settings Screen
+"CHANGE_LANGUAGE" = "changer de langue";
+
+// progrssHUD
+"NO_ARTICLES" = "il n'y a pas d'articles trouvés";

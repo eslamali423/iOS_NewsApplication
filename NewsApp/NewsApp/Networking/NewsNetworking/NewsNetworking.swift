@@ -11,7 +11,6 @@ import Alamofire
 enum NewsNetwroking {
     case getNews
 }
-
 extension NewsNetwroking : TargetType {
     var baseUrl: String {
         get { return  Constants.baseUrl }
@@ -21,9 +20,7 @@ extension NewsNetwroking : TargetType {
     var path: String {
         switch self {
         case .getNews:
-            return "\(Constants.query)\(Constants.apiKey)"
-            
-            
+        return    "\(Constants.everything)\(Constants.query)\(Constants.language)\(NSLocale.preferredLanguages[0])\(Constants.apiKey)"
         }
     }
     

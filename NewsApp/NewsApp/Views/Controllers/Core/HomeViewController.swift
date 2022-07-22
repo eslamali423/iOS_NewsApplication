@@ -9,6 +9,12 @@ import UIKit
 import RxSwift
 import RxCocoa
 import ProgressHUD
+import NVActivityIndicatorView
+
+protocol ButtonActionsDelegate {
+    func didTabSettingsButton()
+    func didChangeSearchBar(text: String)
+}
 
 
 class HomeViewController: UIViewController {
@@ -29,28 +35,36 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
-        title = "Home"
+        //title = NSLocalizedString("HOME_LABEL_TITLE", comment: "")
         view.addSubview(tableView)
         tableView.delegate = self
-//        tableView.dataSource = self
         
         configureHeaderView()
-        
         getNewsData()
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        title = "HOME_LABEL_TITLE".localized(forLanguageCode: NSLocale.preferredLanguages[0])
+        
+//        if UserDefaults.standard.bool(forKey: "isEmptyArticle") {
+//            ProgressHUD.show("NO_ARTICLES".localized(forLanguageCode: NSLocale.preferredLanguages[0]))
+//        }
+        
+    }
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         tableView.frame = view.bounds
         
     }
-    
+ 
     
     //MARK:- Customize Header  for the TableView
     func configureHeaderView()  {
         let  headerView = HeaderView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: view.bounds.height / 5))
-        //    headerView.delegate = self
+        headerView.delegate = self
+        
         tableView.tableHeaderView = headerView
         
     }
@@ -71,28 +85,29 @@ class HomeViewController: UIViewController {
         newsViewModel.newsBehaviorSubject.bind(to: tableView.rx.items(cellIdentifier: NewsTableViewCell.identifier, cellType: NewsTableViewCell.self)) { row ,item , cell in
             
             cell.configureCell(model: item)
-        }
+        }.disposed(by: disposeBag)
         
+        
+        // Did Tap On Item
         tableView.rx.modelSelected(Article.self).subscribe(onNext: { [weak self] (model) in
-            
-            
             let newsVC = NewsDetailsViewController()
             newsVC.configureView(model: model)
             let navigationController = UINavigationController(rootViewController: newsVC)
             navigationController.modalPresentationStyle = .fullScreen
-            
-            
             self?.present(navigationController, animated: true, completion: nil)
-            
+    
         }).disposed(by: disposeBag)
         
     }
     
     //MARK:- Customize Loading Indicator
     private func showProgress(){
+//        let activityIndicatorView = NVActivityIndicatorView(frame: frame , type: .audioEqualizer, color: .systemPink, padding: .none)
         ProgressHUD.animationType = .circleStrokeSpin
         ProgressHUD.colorAnimation = .systemPink
         ProgressHUD.show()
+
+//        activityIndicatorView.startAnimating()
     }
 }
 
@@ -100,7 +115,7 @@ class HomeViewController: UIViewController {
 
 //MARK:- extension for TableView Delegate
 extension HomeViewController : UITableViewDelegate, UITableViewDataSource {
-  
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         10
     }
@@ -136,3 +151,32 @@ extension HomeViewController : UITableViewDelegate, UITableViewDataSource {
     
     
 }
+
+//MARK:- Extension for Buttons Delegate
+extension HomeViewController: ButtonActionsDelegate{
+   
+    func didChangeSearchBar(text: String) {
+        let textStr = text.trimmingCharacters(in: .whitespaces)
+        newsViewModel.search(with: textStr) { (isSuccess) in
+      //
+        }
+     
+
+    }
+    
+
+    func didTabSettingsButton() {
+        
+        let settingsVC = SettingsViewController()
+        settingsVC.modalPresentationStyle = .fullScreen
+        present(settingsVC, animated: true, completion: nil)
+        
+        //   navigationController?.pushViewController(settingsVC, animated: true)
+        
+        
+    }
+}
+
+
+
+

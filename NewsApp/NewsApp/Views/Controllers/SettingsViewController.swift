@@ -59,7 +59,7 @@ extension SettingsViewController: UITableViewDelegate,UITableViewDataSource {
             return UITableViewCell()
         }
         cell.imageView?.image = UIImage(systemName: "globe")
-        cell.textLabel?.text = NSLocalizedString("CHANGE_LANGUAGE", comment: "")
+        cell.textLabel?.text = "CHANGE_LANGUAGE".localized(forLanguageCode: NSLocale.preferredLanguages[0])
         cell.tintColor = .systemPink
         cell.accessoryType = .disclosureIndicator
         return cell

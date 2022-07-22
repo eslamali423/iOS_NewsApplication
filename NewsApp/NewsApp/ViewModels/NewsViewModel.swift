@@ -21,17 +21,51 @@ class NewsViewModel {
             switch result {
             case .success(let response):
                 self.newsBehaviorSubject.on(.next(response?.articles ?? []))
-                print(response?.articles)
+//                if ((response?.articles.isEmpty) != nil) {
+//                    UserDefaults.standard.setValue(true , forKey: "isEmptyArticle")
+//                }else {
+//                    UserDefaults.standard.setValue(false , forKey: "isEmptyArticle")
+//
+//                }
                 completion(true)
             case .failure(let error):
-                print("Error geting data in viewModel")
                 print(error)
                 completion(false)
             }
         }
-        
-        
+   
     }
+    //MARK:- Srarch
+    func search (with query :  String, completion : @escaping (Bool)-> Void){
+        guard !query.trimmingCharacters(in: .whitespaces).isEmpty else {
+            return
+        }
+         let urlString = Constants.searchURL + query
+        guard let url = URL (string: urlString) else {
+           // faild to reatch URL
+           return
+       }
+  // success to get the URL
+       let task  =  URLSession.shared.dataTask(with: url) { (data, _, error) in
+           if let error = error {
+               completion(false)
+           } else if let data =  data  {
+
+               do {
+          let result = try JSONDecoder().decode(APIResponse.self, from: data)
+                self.newsBehaviorSubject.on(.next(result.articles ))
+                completion(true)
+               } catch{
+                   completion(false)
+               }
+
+
+           }
+           
+       }
+       task.resume()
+   }
+    
     
     
     

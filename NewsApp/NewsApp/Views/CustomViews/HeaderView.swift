@@ -10,6 +10,9 @@ import UIKit
 class HeaderView: UIView {
     
     //MARK:- Vars
+    
+    var delegate : ButtonActionsDelegate?
+    
     private let personImageView : UIImageView = {
         let image = UIImageView()
         image.contentMode = .scaleToFill
@@ -28,7 +31,7 @@ class HeaderView: UIView {
         label.numberOfLines = 1
         label.textColor = .label
         label.textAlignment = .left
-        label.text = "Welcome Back Again"
+        label.text = "WELCOME_LABEL_TITLE".localized(forLanguageCode: NSLocale.preferredLanguages[0])
         label.font = .systemFont(ofSize: 20, weight: .regular)
         label.adjustsFontSizeToFitWidth = false
         return label
@@ -40,7 +43,7 @@ class HeaderView: UIView {
         label.numberOfLines = 1
         label.textColor = .gray
         label.textAlignment = .left
-        label.text = "Eslam Ali"
+        label.text = "NAME_LABEL_TITLE".localized(forLanguageCode: NSLocale.preferredLanguages[0])
         label.font = .systemFont(ofSize: 16, weight: .bold)
         label.adjustsFontSizeToFitWidth = false
         return label
@@ -66,7 +69,7 @@ class HeaderView: UIView {
         button.layer.borderColor = UIColor.systemPink.cgColor
         button.tintColor = .systemPink
         button.layer.cornerRadius = 30
-        
+        button.addTarget(self, action: #selector(didTabSettingsButton), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         
         return button
@@ -75,7 +78,7 @@ class HeaderView: UIView {
     private let searchBar : UISearchBar = {
         let search = UISearchBar()
         search.translatesAutoresizingMaskIntoConstraints = false
-        search.placeholder =  "Search about anything.."
+        search.placeholder = "SEARCH_PLACEHOLDER".localized(forLanguageCode: NSLocale.preferredLanguages[0])
         search.layer.borderWidth = 0.7
         search.layer.borderColor = UIColor.systemPink.cgColor
         search.layer.cornerRadius = 15
@@ -83,7 +86,7 @@ class HeaderView: UIView {
         return search
     }()
     
-    
+ 
     
     //MARK:- Initlizaers
     override init(frame: CGRect) {
@@ -93,13 +96,15 @@ class HeaderView: UIView {
         
         setupViews()
         configureConstraints()
+        
+  
     }
     
     required init?(coder: NSCoder) {
         fatalError()
     }
     
-    
+
     //MARK:- Layouts and Constraints
     private func setupViews(){
         addSubview(personImageView)
@@ -109,7 +114,10 @@ class HeaderView: UIView {
         addSubview(settingButton)
         addSubview(searchBar)
         
+        searchBar.delegate = self
     }
+    
+    
     
     private func configureConstraints(){
         NSLayoutConstraint.activate([
@@ -134,5 +142,16 @@ class HeaderView: UIView {
         ])
     }
     
-    
+    //MARK:- Settings Buttons Action
+    @objc private func didTabSettingsButton (){
+        delegate?.didTabSettingsButton()
+       
+    }
+}
+
+
+extension HeaderView: UISearchBarDelegate{
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        delegate?.didChangeSearchBar(text : searchText)
+    }
 }

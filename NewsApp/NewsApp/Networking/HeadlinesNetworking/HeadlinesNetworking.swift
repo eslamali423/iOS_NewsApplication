@@ -21,9 +21,7 @@ extension HeadlinesNetworking : TargetType {
     var path: String {
         switch self {
         case .getHeadlines:
-            return "\(Constants.query)\(Constants.apiKey)"
-            
-            
+            return    "\(Constants.topHeadlines)\(Constants.query)\(Constants.language)\(NSLocale.preferredLanguages[0])\(Constants.apiKey)"
         }
     }
     

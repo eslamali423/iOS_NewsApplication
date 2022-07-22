@@ -20,10 +20,10 @@ struct Article: Codable {
     let author: String?
     let title: String
     let url: String
-    let description: String
-    let urlToImage: String
+    let description: String?
+    let urlToImage: String?
     let publishedAt: String
-    let content: String
+    let content: String?
 
    
 

@@ -10,3 +10,9 @@
 // TabBar
 "HOME_LABEL_TITLE" = "الرئيسية";
 "HEADLINES_LABEL_TITLE" = "أهم الأخبار";
+
+// Settings Screen
+"CHANGE_LANGUAGE" = "أختر اللغة";
+
+// progrssHUD
+"NO_ARTICLES" = "لا يوجد مقالات";
