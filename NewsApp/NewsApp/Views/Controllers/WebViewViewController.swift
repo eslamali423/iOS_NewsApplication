@@ -42,6 +42,9 @@ class WebViewViewController: UIViewController {
         view.backgroundColor = .systemBackground
         view.addSubview(webView)
         webView.load(URLRequest(url: url))
+        configureButtons()
+
+        
     }
     
     override func viewDidLayoutSubviews() {
@@ -54,7 +57,7 @@ class WebViewViewController: UIViewController {
     private func configureButtons(){
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(didTabButton))
         
-        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(didTabRefresh))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(didTabRefresh))
 
         navigationController?.navigationBar.tintColor = .systemPink
 

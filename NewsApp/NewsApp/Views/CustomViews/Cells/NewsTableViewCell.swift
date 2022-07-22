@@ -51,7 +51,7 @@ class NewsTableViewCell: UITableViewCell {
         image.contentMode = .scaleToFill
         image.image = UIImage(named: "person.png")
         image.clipsToBounds = true
-        image.tintColor = .systemPink
+        image.tintColor = .gray
         image.translatesAutoresizingMaskIntoConstraints = false
 
         return image
@@ -168,8 +168,8 @@ class NewsTableViewCell: UITableViewCell {
         
         self.descriptionLabel.text = model.description
         self.titleLabel.text = model.title
-        self.dateLabel.text = model.publishedAt
-        if let url = URL(string: model.urlToImage) {
+        self.dateLabel.text = dateFormat(date : model.publishedAt )
+        if let url = URL(string: model.urlToImage ?? "") {
         self.newsImageView.sd_setImage(with: url, completed: nil)
         }else {
             self.newsImageView.image = UIImage(systemName: "note.text")

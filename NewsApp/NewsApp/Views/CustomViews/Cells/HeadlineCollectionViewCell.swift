@@ -15,9 +15,9 @@ class HeadlineCollectionViewCell: UICollectionViewCell {
     private let headlineImageView : UIImageView = {
        let image = UIImageView()
         image.contentMode = .scaleToFill
-        image.image = UIImage(systemName: "heart")
+        image.layer.cornerRadius = 5
         image.clipsToBounds = true
-        image.backgroundColor = .systemYellow
+        image.tintColor = .gray
         image.translatesAutoresizingMaskIntoConstraints = false
         return image
     }()
@@ -28,7 +28,6 @@ class HeadlineCollectionViewCell: UICollectionViewCell {
         label.numberOfLines = 0
         label.textColor = .label
         label.textAlignment = .left
-        label.text = "Title Title Title Title Title Title Title Title Title Title Title Title Title Title Title Title Title Title itle Title Title Title Title Title Title Title Title Title Title Title Title Title Title Title Title Title  "
         label.font = .systemFont(ofSize: 16, weight: .semibold)
         label.adjustsFontSizeToFitWidth = false
         return label
@@ -50,7 +49,6 @@ class HeadlineCollectionViewCell: UICollectionViewCell {
         label.numberOfLines = 1
         label.textColor = .gray
         label.textAlignment = .left
-        label.text = "Author name"
         label.font = .systemFont(ofSize: 12, weight: .bold)
         label.adjustsFontSizeToFitWidth = false
         return label
@@ -129,7 +127,7 @@ class HeadlineCollectionViewCell: UICollectionViewCell {
        
         self.titleLabel.text = model.title
         
-        if let url = URL(string: model.urlToImage) {
+        if let url = URL(string: model.urlToImage ?? "") {
         self.headlineImageView.sd_setImage(with: url, completed: nil)
         }else {
             self.headlineImageView.image = UIImage(systemName: "note.text")
