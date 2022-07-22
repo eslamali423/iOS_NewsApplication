@@ -29,7 +29,6 @@ class HeaderView: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 1
         label.textColor = .label
-        label.textAlignment = .left
         label.text = "WELCOME_LABEL_TITLE".localized(forLanguageCode: NSLocale.preferredLanguages[0])
         label.font = .systemFont(ofSize: 20, weight: .regular)
         label.adjustsFontSizeToFitWidth = false
@@ -41,7 +40,6 @@ class HeaderView: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 1
         label.textColor = .gray
-        label.textAlignment = .left
         label.text = "NAME_LABEL_TITLE".localized(forLanguageCode: NSLocale.preferredLanguages[0])
         label.font = .systemFont(ofSize: 16, weight: .bold)
         label.adjustsFontSizeToFitWidth = false

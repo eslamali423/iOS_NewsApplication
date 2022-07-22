@@ -32,7 +32,6 @@ class NewsDetailsViewController: UIViewController {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .label
         label.numberOfLines = 0
-        label.textAlignment = .left
         label.font = .systemFont(ofSize: 32, weight: .bold)
         label.adjustsFontSizeToFitWidth = false
         return label
@@ -55,7 +54,6 @@ class NewsDetailsViewController: UIViewController {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 1
         label.textColor = .label
-        label.textAlignment = .left
         label.font = .systemFont(ofSize: 20, weight: .bold)
         label.adjustsFontSizeToFitWidth = false
         return label
@@ -66,7 +64,6 @@ class NewsDetailsViewController: UIViewController {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 1
         label.textColor = .gray
-        label.textAlignment = .left
         label.font = .systemFont(ofSize: 18, weight: .regular)
         label.adjustsFontSizeToFitWidth = false
         return label
@@ -128,6 +125,7 @@ class NewsDetailsViewController: UIViewController {
         // set the left buton to the navBar
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "arrow.backward"), style: .done, target: self, action: #selector(didTabBackButton))
         
+    
         navigationController?.navigationBar.tintColor = .systemPink
     }
     
@@ -191,7 +189,7 @@ class NewsDetailsViewController: UIViewController {
         }
         self.contentLabel.text = model.content
         self.titleLabel.text = model.title
-        self.dateLabel.text = model.publishedAt
+        self.dateLabel.text = dateFormat(date : model.publishedAt )
         if let url = URL(string: model.urlToImage ?? "" ) {
         self.newsImageView.sd_setImage(with: url, completed: nil)
         }else {

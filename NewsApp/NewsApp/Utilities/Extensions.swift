@@ -35,3 +35,5 @@ func dateFormat(date: String) -> String{
     dateFormatter.locale = Locale(identifier: NSLocale.preferredLanguages[0])
     return dateFormatter.string(from: myDate)
 }
+
+

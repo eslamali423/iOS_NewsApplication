@@ -34,6 +34,7 @@ class HeadlinesViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
         title = "HEADLINES_LABEL_TITLE".localized(forLanguageCode: NSLocale.preferredLanguages[0])
+        navigationController?.navigationBar.prefersLargeTitles = true
         view.addSubview(collectionView)
         collectionView.delegate = self
         setupCollectionView()

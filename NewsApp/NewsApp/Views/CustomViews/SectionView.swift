@@ -27,7 +27,6 @@ class SectionView: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 1
         label.textColor = .label
-        label.textAlignment = .left
         label.text =  "TOP_ARTICELS_LABEL".localized(forLanguageCode: NSLocale.preferredLanguages[0])
         label.font = .systemFont(ofSize: 32, weight: .bold)
         label.adjustsFontSizeToFitWidth = false
