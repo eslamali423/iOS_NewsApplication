@@ -47,11 +47,6 @@ class HomeViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         title = "HOME_LABEL_TITLE".localized(forLanguageCode: NSLocale.preferredLanguages[0])
-        
-//        if UserDefaults.standard.bool(forKey: "isEmptyArticle") {
-//            ProgressHUD.show("NO_ARTICLES".localized(forLanguageCode: NSLocale.preferredLanguages[0]))
-//        }
-        
     }
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
@@ -70,7 +65,7 @@ class HomeViewController: UIViewController {
     }
     
     
-    //MARK:- Get News Data
+    //MARK:- Get News Data from ViewModel
     func getNewsData () {
         showProgress()
         newsViewModel.getNews { [weak self](isSuccess) in
@@ -102,12 +97,9 @@ class HomeViewController: UIViewController {
     
     //MARK:- Customize Loading Indicator
     private func showProgress(){
-//        let activityIndicatorView = NVActivityIndicatorView(frame: frame , type: .audioEqualizer, color: .systemPink, padding: .none)
         ProgressHUD.animationType = .circleStrokeSpin
         ProgressHUD.colorAnimation = .systemPink
         ProgressHUD.show()
-
-//        activityIndicatorView.startAnimating()
     }
 }
 
@@ -169,9 +161,9 @@ extension HomeViewController: ButtonActionsDelegate{
         
         let settingsVC = SettingsViewController()
         settingsVC.modalPresentationStyle = .fullScreen
-        present(settingsVC, animated: true, completion: nil)
+        let navgation = UINavigationController(rootViewController: settingsVC)
+        present(navgation, animated: true, completion: nil)
         
-        //   navigationController?.pushViewController(settingsVC, animated: true)
         
         
     }

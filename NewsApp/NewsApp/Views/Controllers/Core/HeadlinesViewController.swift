@@ -24,6 +24,7 @@ class HeadlinesViewController: UIViewController {
 
         layout.scrollDirection = .vertical
         let collectionView = UICollectionView(frame: .zero,  collectionViewLayout: layout)
+        collectionView.backgroundColor = .clear
         collectionView.showsHorizontalScrollIndicator = false
         return collectionView
     }()
@@ -32,10 +33,10 @@ class HeadlinesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
+        title = "HEADLINES_LABEL_TITLE".localized(forLanguageCode: NSLocale.preferredLanguages[0])
         view.addSubview(collectionView)
         collectionView.delegate = self
         setupCollectionView()
-        
         getdata()
     }
     
@@ -44,16 +45,15 @@ class HeadlinesViewController: UIViewController {
         collectionView.frame = CGRect(x: 20, y: 0, width: view.frame.size.width - 40, height: view.frame.size.height)
         
     }
-    
+    //MARK:- Setup Cells for CollectionView
     private func setupCollectionView(){
-        collectionView.backgroundColor = .green
-      
+
         collectionView.register(HeadlineCollectionViewCell.self, forCellWithReuseIdentifier: HeadlineCollectionViewCell.identifier)
 
         collectionView.register(HeaderCollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,withReuseIdentifier: HeaderCollectionReusableView.identifier)
     }
     
-    //MARK:- get Data
+    //MARK:- Get Data Form ViewModel and Bind the collectionView 
     func getdata(){
         headlinesViewModel.getHeadlines { [weak self](isSuccess) in
             if isSuccess {
@@ -69,7 +69,7 @@ class HeadlinesViewController: UIViewController {
         headlinesViewModel.headlinesBehaviorSubject.bind(to: collectionView.rx.items(cellIdentifier: HeadlineCollectionViewCell.identifier, cellType: HeadlineCollectionViewCell.self)) { row ,item , cell in
             
             cell.configureCell(model: item)
-        }
+        }.disposed(by: disposeBag)
         
         collectionView.rx.modelSelected(Article.self).subscribe(onNext: { [weak self] (model) in
             
@@ -94,6 +94,8 @@ extension HeadlinesViewController :  UICollectionViewDelegate, UICollectionViewD
         
     }
     
+    
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 20, left: 10, bottom: 20, right: 10)
     }
@@ -113,9 +115,9 @@ extension HeadlinesViewController :  UICollectionViewDelegate, UICollectionViewD
 
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return CGSize(width: collectionView.frame.width, height: 300)
-    }
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+//        return CGSize(width: collectionView.frame.width, height: 300)
+//    }
     
 
     

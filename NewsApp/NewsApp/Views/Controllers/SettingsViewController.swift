@@ -10,6 +10,7 @@ import LanguageManager_iOS
 
 class SettingsViewController: UIViewController {
     
+    //MARK:- Vars
     private let tableView : UITableView = {
         let table = UITableView(frame: .zero, style: .grouped)
         table.backgroundColor = .clear
@@ -18,12 +19,24 @@ class SettingsViewController: UIViewController {
         return table
     }()
     
+    //MARK:- Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         view.backgroundColor = .systemBackground
+        
+        navigationController?.navigationBar.prefersLargeTitles = true
+    
         view.addSubview(tableView)
+    
         tableView.delegate = self
         tableView.dataSource = self
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+     title =   "SETTINGS_TITLE".localized(forLanguageCode: NSLocale.preferredLanguages[0])
         
     }
     
@@ -49,6 +62,7 @@ class SettingsViewController: UIViewController {
     
 }
 
+//MARK:- Extension for Tableview Methods
 extension SettingsViewController: UITableViewDelegate,UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         1
@@ -58,20 +72,22 @@ extension SettingsViewController: UITableViewDelegate,UITableViewDataSource {
         guard let cell =  tableView.dequeueReusableCell(withIdentifier: "cell")  else {
             return UITableViewCell()
         }
-        cell.imageView?.image = UIImage(systemName: "globe")
+        cell.imageView?.image = UIImage(systemName: "globe",withConfiguration: UIImage.SymbolConfiguration(pointSize: 22))
+        
         cell.textLabel?.text = "CHANGE_LANGUAGE".localized(forLanguageCode: NSLocale.preferredLanguages[0])
+        cell.textLabel?.font = .systemFont(ofSize: 22)
         cell.tintColor = .systemPink
         cell.accessoryType = .disclosureIndicator
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        50
+        80
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
-        let alert = UIAlertController(title: "Change Language", message: "Choose the language for News App", preferredStyle: .actionSheet)
+        let alert = UIAlertController(title: "CHANGE_LANGUAGE".localized(forLanguageCode: NSLocale.preferredLanguages[0]), message: "CHOOSE_LANGUAGE".localized(forLanguageCode: NSLocale.preferredLanguages[0]), preferredStyle: .actionSheet)
         
         alert.addAction(UIAlertAction(title: "English", style: .default, handler: { [weak self] (action) in
             UserDefaults.standard.setValue(["en"], forKey: "AppleLanguages")
@@ -102,7 +118,7 @@ extension SettingsViewController: UITableViewDelegate,UITableViewDataSource {
         present(alert, animated: true, completion: nil)
     }
     
-    
+
     private   func changeLanguage (selectedLanguage :Languages?) {
         DispatchQueue.main.async {
             // change the language

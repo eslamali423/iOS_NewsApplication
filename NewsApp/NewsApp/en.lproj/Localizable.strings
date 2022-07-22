@@ -12,7 +12,10 @@
 "HEADLINES_LABEL_TITLE" = "Headlines";
 
 // Settings Screen
+"SETTINGS_TITLE" = "Settings";
 "CHANGE_LANGUAGE" = "Change language";
+"CHOOSE_LANGUAGE" = "Choose language for news app";
+
 
 // progrssHUD
 "NO_ARTICLES" = "There are no articles found";

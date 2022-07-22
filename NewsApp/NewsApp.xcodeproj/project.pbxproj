@@ -153,10 +153,10 @@
 		2866ABEE288808B700E0B0F2 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				28881E3F28888F240089E7CF /* Core */,
 				28881E4028888F420089E7CF /* NewsDetailsViewController.swift */,
 				28D5A7B328892D5100AA267A /* WebViewViewController.swift */,
 				28E61CA42889E536003F73D0 /* SettingsViewController.swift */,
+				28881E3F28888F240089E7CF /* Core */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";

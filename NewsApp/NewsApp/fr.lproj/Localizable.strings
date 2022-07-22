@@ -12,7 +12,9 @@
 "HEADLINES_LABEL_TITLE" = "titres";
 
 // Settings Screen
+"SETTINGS_TITLE" = "réglages";
 "CHANGE_LANGUAGE" = "changer de langue";
+"CHOOSE_LANGUAGE" = "choisir la langue de l'application d'actualités";
 
 // progrssHUD
 "NO_ARTICLES" = "il n'y a pas d'articles trouvés";

@@ -32,7 +32,6 @@ class NewsDetailsViewController: UIViewController {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .label
         label.numberOfLines = 0
-        label.text = "title"
         label.textAlignment = .left
         label.font = .systemFont(ofSize: 32, weight: .bold)
         label.adjustsFontSizeToFitWidth = false
@@ -57,7 +56,6 @@ class NewsDetailsViewController: UIViewController {
         label.numberOfLines = 1
         label.textColor = .label
         label.textAlignment = .left
-        label.text = "Author name"
         label.font = .systemFont(ofSize: 20, weight: .bold)
         label.adjustsFontSizeToFitWidth = false
         return label
@@ -69,7 +67,6 @@ class NewsDetailsViewController: UIViewController {
         label.numberOfLines = 1
         label.textColor = .gray
         label.textAlignment = .left
-        label.text = "Date"
         label.font = .systemFont(ofSize: 18, weight: .regular)
         label.adjustsFontSizeToFitWidth = false
         return label
@@ -88,9 +85,9 @@ class NewsDetailsViewController: UIViewController {
     private let newsImageView : UIImageView = {
         let image = UIImageView()
         image.contentMode = .scaleToFill
-        image.image = UIImage(systemName: "heart")
         image.layer.cornerRadius = 15
-        image.backgroundColor = .green
+        image.backgroundColor = .clear
+        image.tintColor = .gray
         image.clipsToBounds = true
         image.translatesAutoresizingMaskIntoConstraints = false
         image.tintColor = .systemPink
@@ -104,7 +101,6 @@ class NewsDetailsViewController: UIViewController {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
         label.textColor = .gray
-        label.text = "Content"
         label.font = .systemFont(ofSize: 16, weight: .regular)
         label.adjustsFontSizeToFitWidth = false
         return label
@@ -129,24 +125,9 @@ class NewsDetailsViewController: UIViewController {
     //MARK:- Navbar Configuration
     func configureNavBar()  {
         
-        // set the logo in the center
-        let imageView = UIImageView()
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        //  imageView.heightAnchor.constraint(equalToConstant: 40).isActive = true
-        imageView.contentMode = .scaleAspectFit
-        
-        imageView.image = UIImage(systemName: "note.text", withConfiguration: UIImage.SymbolConfiguration(scale: .large))
-        
-        let contentView = UIView()
-        self.navigationItem.titleView = contentView
-        self.navigationItem.titleView?.addSubview(imageView)
-        imageView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true
-        imageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
-        
         // set the left buton to the navBar
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "arrow.backward"), style: .done, target: self, action: #selector(didTabBackButton))
         
-    
         navigationController?.navigationBar.tintColor = .systemPink
     }
     

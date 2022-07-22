@@ -10,7 +10,6 @@ import UIKit
 class HeaderView: UIView {
     
     //MARK:- Vars
-    
     var delegate : ButtonActionsDelegate?
     
     private let personImageView : UIImageView = {
@@ -149,7 +148,7 @@ class HeaderView: UIView {
     }
 }
 
-
+//MARK:- Extension for SearchBar Delegate 
 extension HeaderView: UISearchBarDelegate{
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         delegate?.didChangeSearchBar(text : searchText)

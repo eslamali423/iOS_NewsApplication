@@ -7,6 +7,7 @@
 
 import Foundation
 
+// String extension for Localization
 extension String {
     func localized(forLanguageCode lanCode: String) -> String {
         guard
@@ -23,6 +24,7 @@ extension String {
     }
 }
 
+// DateFormatter
 func dateFormat(date: String) -> String{
     
     let dateFormatter = DateFormatter()

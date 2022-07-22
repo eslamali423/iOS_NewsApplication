@@ -12,7 +12,6 @@ class MainTabBarViewController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        
         let vc1 = UINavigationController(rootViewController: HomeViewController())
         let vc2 = UINavigationController(rootViewController: HeadlinesViewController())
      
@@ -20,8 +19,8 @@ class MainTabBarViewController: UITabBarController {
         vc1.tabBarItem.image = UIImage(systemName: "house")
         vc2.tabBarItem.image = UIImage(systemName: "doc.append")
         
-        vc1.title = NSLocalizedString("HOME_LABEL_TITLE", comment: "")
-        vc2.title = NSLocalizedString("HEADLINES_LABEL_TITLE", comment: "")
+        vc1.title = "HOME_LABEL_TITLE".localized(forLanguageCode: NSLocale.preferredLanguages[0])
+        vc2.title = "HEADLINES_LABEL_TITLE".localized(forLanguageCode: NSLocale.preferredLanguages[0])
         
         tabBar.tintColor = .systemPink
         

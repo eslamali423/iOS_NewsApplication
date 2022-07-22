@@ -12,7 +12,10 @@
 "HEADLINES_LABEL_TITLE" = "أهم الأخبار";
 
 // Settings Screen
+"SETTINGS_TITLE" = "الاعدادات";
 "CHANGE_LANGUAGE" = "أختر اللغة";
+"CHOOSE_LANGUAGE" = "اختر اللغة لتتطبيق الاخبار";
+
 
 // progrssHUD
 "NO_ARTICLES" = "لا يوجد مقالات";
