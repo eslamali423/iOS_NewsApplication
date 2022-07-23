@@ -95,12 +95,7 @@ class HomeViewController: UIViewController {
         
     }
     
-    //MARK:- Customize Loading Indicator
-    private func showProgress(){
-        ProgressHUD.animationType = .circleStrokeSpin
-        ProgressHUD.colorAnimation = .systemPink
-        ProgressHUD.show()
-    }
+  
 }
 
 

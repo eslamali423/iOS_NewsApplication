@@ -18,3 +18,6 @@
 
 // progrssHUD
 "NO_ARTICLES" = "il n'y a pas d'articles trouvés";
+
+// newsDetailsViewController
+"ARTICLES_LABLE_TITLE" = "Article";

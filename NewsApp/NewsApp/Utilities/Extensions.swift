@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import ProgressHUD
 
 // String extension for Localization
 extension String {
@@ -37,3 +38,9 @@ func dateFormat(date: String) -> String{
 }
 
 
+//MARK:- Customize Loading Indicator
+public func showProgress(){
+    ProgressHUD.animationType = .circleStrokeSpin
+    ProgressHUD.colorAnimation = .systemPink
+    ProgressHUD.show()
+}

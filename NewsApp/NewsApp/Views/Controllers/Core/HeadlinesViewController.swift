@@ -8,6 +8,7 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import ProgressHUD
 
 
 class HeadlinesViewController: UIViewController {
@@ -56,10 +57,14 @@ class HeadlinesViewController: UIViewController {
     
     //MARK:- Get Data Form ViewModel and Bind the collectionView 
     func getdata(){
+        showProgress()
         headlinesViewModel.getHeadlines { [weak self](isSuccess) in
             if isSuccess {
                 print("DONE HEADLINES")
                 self?.bindCollecnView()
+                ProgressHUD.dismiss()
+
+                
             }
         }
         
