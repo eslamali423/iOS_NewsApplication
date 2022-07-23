@@ -18,11 +18,12 @@ extension NewsNetwroking : TargetType {
     }
     
     var path: String {
-        switch self {
-        case .getNews:
-        return    "\(Constants.everything)\(Constants.query)\(Constants.language)\(NSLocale.preferredLanguages[0])\(Constants.apiKey)"
+            switch self {
+            case .getNews:
+                let lang = NSLocale.preferredLanguages[0].components(separatedBy: "-").first ?? NSLocale.preferredLanguages[0]
+                return    "\(Constants.everything)\(Constants.query)\(Constants.language)\(lang)\(Constants.apiKey)"
+            }
         }
-    }
     
     var method: HTTPMethod {
         switch self  {

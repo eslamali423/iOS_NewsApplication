@@ -16,7 +16,7 @@ struct Constants {
     static let baseUrl = "https://newsapi.org/v2/"
     static let everything = "everything?"
     static let topHeadlines = "top-headlines?"
-    static let countery = "country=US&"
+    static let countery = "&country=US"
     static let language = "&language="
     static let query = "q=a"
     static let apiKey = "&apiKey=ec2b8d064e274580b1791a1ee1b980cc"
