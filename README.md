@@ -7,22 +7,22 @@ News App iOS Documentaion
 
 3 - HeaderView contains a searchBar & SettingsButton
 
-4- SearchBar allows users to search about any articles and automaticly bind the tableView 
+4- SearchBar allows users to search for any articles and automatically bind the tableView 
 
-5 -  Did tap settingsButton opens SettingsViewController that you can change the language for tha whole App (Localization)
+5 - Tap the settings button opens SettingsViewController so that you can change the language for the whole App (Localization)
 
-7 - Each cell in HomeTableView has specific  articles info that fetched form viewModel 
+7 - Each cell in HomeTableView has specific  articles info that is fetched from ViewModel 
 
-8 - didSelect cell navigate to newsDetailsViewController show all ditails in scrolable view
+8 - did select cell navigate to newsDetailsViewController show all details in a scrollable view
  
 9-  HeadlinesViewController contains a collectionView for Top-Headlines 
 
-10- didSelect a collectionViewCell opens webKit in app with with URL from response.
+10- Selecting a collection view cell opens WebKit in the app with the URL from the response.
 
 --------------------------------------------------------------------------
 
 - MVVM as a architecture design pattern
-- RxSwift: binding data and ui visual elements in any propagation of change
+- RxSwift: binding data and UI visual elements in any propagation of change
 - Network Layer
 - Alamofire with Generics Codable Models for parsing JSON
 - SDWebImage
