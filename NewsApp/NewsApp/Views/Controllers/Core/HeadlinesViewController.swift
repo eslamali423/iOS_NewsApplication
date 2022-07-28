@@ -22,8 +22,8 @@ class HeadlinesViewController: UIViewController {
     private let collectionView : UICollectionView = {
         // Layout
         let layout = UICollectionViewFlowLayout()
-
         layout.scrollDirection = .vertical
+        
         let collectionView = UICollectionView(frame: .zero,  collectionViewLayout: layout)
         collectionView.backgroundColor = .clear
         collectionView.showsHorizontalScrollIndicator = false
@@ -99,9 +99,7 @@ extension HeadlinesViewController :  UICollectionViewDelegate, UICollectionViewD
         return CGSize(width: view.frame.size.width / 2.5, height: 300)
         
     }
-    
-    
-    
+  
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 20, left: 10, bottom: 20, right: 10)
     }
@@ -121,8 +119,11 @@ extension HeadlinesViewController :  UICollectionViewDelegate, UICollectionViewD
 
     }
     
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-//        return CGSize(width: collectionView.frame.width, height: 300)
+//    func collectionView(_ collectionView: UICollectionView,
+//                        layout collectionViewLayout: UICollectionViewLayout,
+//                        referenceSizeForHeaderInSection section: Int) -> CGSize {
+//
+//        return CGSize(width: collectionView.bounds.width, height: 100)
 //    }
     
 

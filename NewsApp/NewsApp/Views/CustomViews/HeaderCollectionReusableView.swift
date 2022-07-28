@@ -25,23 +25,23 @@ class HeaderCollectionReusableView: UICollectionReusableView {
         return label
     }()
     
-//    private let collectionView : UICollectionView = {
-//        // Layout
-//        let layout = UICollectionViewFlowLayout()
-//        layout.scrollDirection = .vertical
-//        //   layout.itemSize = CGSize(width: 220, height: 300)
-//
-//        let collectionView = UICollectionView(frame: .zero,  collectionViewLayout: layout)
-//        collectionView.register(HeadlineCollectionViewCell.self, forCellWithReuseIdentifier: HeadlineCollectionViewCell.identifier)
-//        collectionView.backgroundColor = .red
-//        return collectionView
-//    }()
+    private let collectionView : UICollectionView = {
+        // Layout
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .vertical
+        //   layout.itemSize = CGSize(width: 220, height: 300)
+
+        let collectionView = UICollectionView(frame: .zero,  collectionViewLayout: layout)
+        collectionView.register(HeadlineCollectionViewCell.self, forCellWithReuseIdentifier: HeadlineCollectionViewCell.identifier)
+        collectionView.backgroundColor = .red
+        return collectionView
+    }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = .systemYellow
-//        addSubview(titleLabel)
-//        addSubview(collectionView)
+        addSubview(titleLabel)
+        addSubview(collectionView)
     }
     
     required init?(coder: NSCoder) {
@@ -53,9 +53,8 @@ class HeaderCollectionReusableView: UICollectionReusableView {
     //MARK:- Layouts / Constraints
     override func layoutSubviews() {
         super.layoutSubviews()
-        //let imageSize: CGFloat = bounds.height
-        titleLabel.frame = bounds
-      //  collectionView.frame = CGRect(x: 0, y: titleLabel.frame.height + 10, width: bounds.width - 10, height: bounds.height - 60)
+        titleLabel.frame = CGRect(x: 20, y: 20, width: frame.width - 40, height: frame.height - 40)
+        collectionView.frame = CGRect(x: 0, y: titleLabel.frame.height + 10, width: bounds.width - 10, height: bounds.height - 60)
  
     }
     

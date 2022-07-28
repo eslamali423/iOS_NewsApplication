@@ -64,6 +64,8 @@ class NewsViewModel {
            
        }
        task.resume()
+        
+        
    }
     
     

@@ -101,42 +101,11 @@ class HomeViewController: UIViewController {
 
 
 //MARK:- extension for TableView Delegate
-extension HomeViewController : UITableViewDelegate, UITableViewDataSource {
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        10
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: NewsTableViewCell.identifier) as! NewsTableViewCell
-        
-        return cell
-    }
-    
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        1
-    }
-    
-    // set the height for section
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 70
-    }
-    
+extension HomeViewController : UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 150
     }
-    
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        
-        let sectioView = SectionView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.width, height: view.bounds.height))
-        return sectioView
-        
-    }
-    
-    
-    
 }
 
 //MARK:- Extension for Buttons Delegate
@@ -147,11 +116,8 @@ extension HomeViewController: ButtonActionsDelegate{
         newsViewModel.search(with: textStr) { (isSuccess) in
       //
         }
-     
-
     }
     
-
     func didTabSettingsButton() {
         
         let settingsVC = SettingsViewController()
